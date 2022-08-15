@@ -35,27 +35,29 @@ fn main() {
     for path in paths {
         let dir = path.unwrap();
         let meta_data = &dir.metadata();
-        // let filename = &dir.path().to_str().unwrap();
         let filename = &dir.file_name().into_string().unwrap();
-        // println!("{:?}",filename);
-        
-        // println!("{:?}",&dir.metadata().unwrap().permissions());
-        // e_red_ln!("File: {:?}, size(types): {}, type: {:?}",&dir.path(),fs::metadata(&dir.path()).unwrap().len(),&dir.file_type().unwrap());
-            // A more complicated way to add a row:
+
 
         let size:&str = &fs::metadata(&dir.path()).unwrap().len().to_string();
-        let author = &fs::metadata(&dir.path()).unwrap();
+        let meta_data = &fs::metadata(&dir.path()).unwrap();
         let time_created = &fs::metadata(&dir.path()).unwrap().created()
             .unwrap().elapsed().unwrap().as_secs().to_string();
         
         
-        
-        table.add_row(Row::new(vec![
-            Cell::new(filename),
-            Cell::new(size),
-            Cell::new(time_created)
-            
+        if meta_data.is_dir(){
+            table.add_row(Row::new(vec![
+                Cell::new(format!("{} {}",filename,"**").as_str()),
+                Cell::new(size),
+                Cell::new(time_created)
             ]));
+        }else{
+            table.add_row(Row::new(vec![
+                Cell::new(filename),
+                Cell::new(size),
+                Cell::new(time_created)
+            ]));
+        }
+
             
 
         // Print the table to stdout
