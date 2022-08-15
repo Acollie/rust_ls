@@ -348,14 +348,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6c230d73fb8d8c1b9c0b3135c5142a8acee3a0558fb8db5cf1cb65f8d7862132"
 
 [[package]]
-name = "rls"
-version = "0.1.0"
-dependencies = [
- "colour",
- "prettytable-rs",
-]
-
-[[package]]
 name = "rust-argon2"
 version = "0.8.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -365,6 +357,14 @@ dependencies = [
  "blake2b_simd",
  "constant_time_eq",
  "crossbeam-utils",
+]
+
+[[package]]
+name = "rust_ls"
+version = "0.1.0"
+dependencies = [
+ "colour",
+ "prettytable-rs",
 ]
 
 [[package]]

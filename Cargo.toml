@@ -1,5 +1,5 @@
 [package]
-name = "rls"
+name = "rust_ls"
 version = "0.1.0"
 edition = "2021"
 
@@ -8,4 +8,3 @@ edition = "2021"
 [dependencies]
 colour = "0.6.0"
 prettytable-rs = "^0.8"
-# shrust = "0.0.7"
