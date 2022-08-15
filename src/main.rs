@@ -1,24 +1,15 @@
-use std::fs::{self, Metadata};
-use std::io::Error;
+use std::fs::{self};
+use prettytable::{Attr, color,Table, Row, Cell};
 
-#[warn(unused_variables)]
-
-
-#[macro_use]
 extern crate colour;
-#[macro_use] extern crate prettytable;
-use prettytable::{Table, Row, Cell};
+extern crate prettytable;
 
-
-
-use std::io::prelude::*;
 
 
 fn main() {
 
     let paths = fs::read_dir("./").unwrap();
     let mut table = Table::new();
-    let mut counter = 0 ;
 
     table.add_row(Row::new(vec![
             Cell::new("Filename")
@@ -58,31 +49,11 @@ fn main() {
             ]));
         }
 
-            
 
-        // Print the table to stdout
-        counter += 1
     }
     table.printstd();
 
-    use prettytable::{Attr, color};
 
-/* ... */
-    // let mut table = Table::new();
-    table.add_row(Row::new(vec![
-        Cell::new("foobar")
-            .with_style(Attr::Bold)
-            .with_style(Attr::ForegroundColor(color::GREEN)),
-            Cell::new("bar")
-            .with_style(Attr::BackgroundColor(color::RED))
-            .with_style(Attr::Italic(true))
-            .with_hspan(1),
-            Cell::new("bar")
-            .with_style(Attr::ForegroundColor(color::BLUE))
-            .with_style(Attr::Italic(true))
-            .with_hspan(1),
-        Cell::new("foo")
-        ]));
 
 
 }
