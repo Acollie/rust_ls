@@ -1,7 +1,7 @@
 use std::fs::Metadata;
 use prettytable::{Attr, color,Table, Row, Cell};
 
-pub fn adding_row(mut table:Table, filename:&str, size:&str, meta_data:&Metadata, date_time_created: &str) ->Table{
+pub fn adding_row(table:& mut Table, filename:&str, size:&str, meta_data:&Metadata, date_time_created: &str){
     if meta_data.is_dir(){
         table.add_row(Row::new(vec![
             Cell::new(format!("{} {}",filename,"**").as_str()),
@@ -15,7 +15,6 @@ pub fn adding_row(mut table:Table, filename:&str, size:&str, meta_data:&Metadata
             Cell::new(&date_time_created),
         ]));
     }
-    table
 }
 
 

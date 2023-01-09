@@ -17,7 +17,8 @@ pub fn loop_over_file(paths:ReadDir){
             .unwrap();
         let datetime: DateTime<Utc> = time_created.into();
         let date_time_created = datetime.format("%d/%m/%Y %T").to_string();
-        table = table_format::adding_row(table,filename.as_str(),size,meta_data,date_time_created.as_str())
+        table_format::adding_row(& mut table,filename.as_str(),size,meta_data,date_time_created.as_str())
+    
 
 
     }
