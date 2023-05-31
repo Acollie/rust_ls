@@ -1,20 +1,13 @@
-use std::fs::Metadata;
 use prettytable::{Attr, color,Table, Row, Cell};
 
-pub fn adding_row(table:& mut Table, filename:&str, size:&str, meta_data:&Metadata, date_time_created: &str){
-    if meta_data.is_dir(){
-        table.add_row(Row::new(vec![
-            Cell::new(format!("{} {}",filename,"**").as_str()),
-            Cell::new(&size),
-            Cell::new(&date_time_created)
-        ]));
-    }else{
-        table.add_row(Row::new(vec![
-            Cell::new(filename),
-            Cell::new(&size),
-            Cell::new(&date_time_created),
-        ]));
-    }
+pub fn adding_row(table:& mut Table, filename:&str, size:&str, date_time_created: &str, file_type: &str){
+
+    table.add_row(Row::new(vec![
+        Cell::new(filename),
+        Cell::new(&size),
+        Cell::new(&file_type),
+        Cell::new(&date_time_created),
+    ]));
 }
 
 
@@ -29,10 +22,17 @@ pub fn creating_table()->Table{
             .with_style(Attr::ForegroundColor(color::BLUE))
             .with_style(Attr::Italic(true))
             .with_hspan(1),
+        Cell::new("File Type")
+            .with_style(Attr::ForegroundColor(color::WHITE))
+            .with_style(Attr::Italic(true))
+            .with_hspan(1),
         Cell::new("Created at")
             .with_style(Attr::ForegroundColor(color::GREEN))
             .with_style(Attr::Italic(true))
             .with_hspan(1),
+
+
+
 
     ]));
     table
